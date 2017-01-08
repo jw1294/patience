@@ -2,7 +2,7 @@ import random
 
 
 suits = ['spades','clubs','hearts','diamonds']
-values = ['ace','two','three','four','five','six','seven','eight','nine','10','jack','queen','king']
+values = ['ace','two','three','four','five','six','seven','eight','nine','ten','jack','queen','king']
 regular_cards = True
 
 
@@ -75,7 +75,10 @@ class Deck:
       if retain_order:
          new_deck.reverse()
       return new_deck
-      
+   
+   def cut(self, number=52/2):
+      return self.deal(number, retain_order=True)
+
    def flip(self, retain_order=False):
       for card in self.cards:
          card.flip()
@@ -83,7 +86,7 @@ class Deck:
          self.cards.reverse()
          
    def extend(self, deck):
-      self.cards.extend(deck)
+      self.cards.extend(deck.cards)
       
    def shuffle(self):
       random.shuffle(self.cards)
