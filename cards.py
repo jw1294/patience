@@ -90,18 +90,11 @@ class Deck:
       
    def shuffle(self):
       random.shuffle(self.cards)
-      
+
+
 def create_standard_deck(face_up=False):
    d = Deck()
    for suit in suits:
       for value in values:
          d.add_card(Card(suit,value,face_up))
    return d
-      
-   
-      
-      
-      
-      
-      
-      
