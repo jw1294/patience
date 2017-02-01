@@ -2,7 +2,11 @@ import random
 
 
 suits = ['spades','clubs','hearts','diamonds']
+mini_suits = ['s','c','h','d']
+
 values = ['ace','two','three','four','five','six','seven','eight','nine','ten','jack','queen','king']
+mini_values = ['a','2','3','4','5','6','7','8','9','t','j','q','k']
+
 regular_cards = True
 
 
@@ -16,16 +20,22 @@ class Card:
          assert self.__suit in suits
          assert self.__value in values
          assert self.__face_up in [True,False]
-      except(AssertionError):
+      except AssertionError:
          if regular_cards:
             print 'Warning: This card "{}" is not a regular playing card'.format(self)
 
    def __str__(self):
-      if(self.__face_up):
+      if self.__face_up:
          return '{0} of {1}'.format(self.__value, self.__suit)
       else:
          return 'face down card'
-         
+   
+   def as_mini_str(self):
+      if self.__face_up:
+          return mini_values[values.index(self.__value)] + mini_suits[suits.index(self.__suit)]
+      else:
+          return 'xx'
+      
    def get_suit(self):
       return self.__suit
       
@@ -44,14 +54,17 @@ class Deck:
       self.cards = []
       
    def __str__(self):
-      s = "deck of {} cards:".format(self.count())
+      s = "deck of {} cards:".format(len(self))
       for card in self.cards:
          s += '\n'
          s += str(card)
       return s
-   
-   def count(self):
+      
+   def __len__(self):
       return len(self.cards)
+      
+   def __getitem__(self, key):
+      return self.cards[key]
       
    def add_card(self, card):
       self.cards.append(card)
