@@ -68,7 +68,7 @@ class Deck:
    def reverse(self):
       self.cards.reverse()
 
-   def deal(self, number, retain_order=False):
+   def deal(self, number=1, retain_order=False):
       new_deck = Deck()
       for i in range(0, number):
          new_deck.add_card(self.cards.pop())
