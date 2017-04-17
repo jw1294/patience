@@ -88,13 +88,13 @@ class BoardState:
       if len(self.deck_down) is 0:
          self.deck_down = self.deck_up.deal(len(self.deck_up), retain_order=True)
          self.deck_down.flip()
-    #   elif len(self.deck_down) < 3:
-    #      n_cards = self.deck_down.deal(len(self.deck_down), retain_order=True)
-    #      n_cards.flip(retain_order=True)
-    #      for card in three_cards:
-    #         self.deck_up.insert_card(0, card)
+      elif len(self.deck_down) < 3:
+         n_cards = self.deck_down.deal(len(self.deck_down), retain_order=True)
+         n_cards.flip(retain_order=True)
+         for card in three_cards:
+            self.deck_up.insert_card(0, card)
       else:
-         three_cards = self.deck_down.deal(1, retain_order=True)    ##CHANGE BACK TO 3!
+         three_cards = self.deck_down.deal(3, retain_order=True)  
          three_cards.flip(retain_order=True)
          for card in three_cards:
              self.deck_up.insert_card(0, card)
