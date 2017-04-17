@@ -18,7 +18,17 @@ def main():
             col_from = int(input('move from which colomn: '))
             col_to = int(input('move to which colomn: '))
             number = int(input('move how many: '))
-            result = game.move_card(col_from, col_to, number)
+            result = game.move_cards(col_from, col_to, number)
+        elif move == 'r':
+            col_to = int(input('move to which colomn: '))
+            result = game.raise_card(col_to)
+        elif move == 'f':
+            col_to = int(input('which colomn to flip: '))
+            result = game.flip(col_to)
+        elif move == 's':
+            col_from = int(input('which colomn to stack: '))
+            stack_to = int(input('which stack: '))
+            result = game.stack_card(col_from, stack_to)
         else:
             result = 1
 
